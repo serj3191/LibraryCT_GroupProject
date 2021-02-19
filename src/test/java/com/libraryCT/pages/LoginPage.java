@@ -22,6 +22,9 @@ public class LoginPage {
     @FindBy(xpath = "//button[@type='submit']")
     public WebElement signInButton;
 
+    @FindBy(xpath = "//div[contains(@class,'alert-danger')]")
+    public WebElement errorMessage;
+
     public void loginAs(String userType) {
         String username;
         String password;
@@ -42,5 +45,9 @@ public class LoginPage {
         emailInput.sendKeys(username);
         passwordInput.sendKeys(password);
         BrowserUtils.waitUntilClickable(signInButton).click();
+    }
+
+    public String getErrorMessage() {
+        return errorMessage.getText().trim();
     }
 }
