@@ -22,6 +22,4 @@ public abstract class Student_BasePage {
     @FindBy(id = "navbarDropdown")
     public WebElement navBarDropdown;
 
-    @FindBy(xpath = "//table[@id='tbl_books']//th")
-    public List<WebElement> tableheaders;
 }
