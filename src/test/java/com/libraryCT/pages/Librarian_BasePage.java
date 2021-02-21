@@ -21,4 +21,8 @@ public abstract class Librarian_BasePage {
 
     @FindBy(id = "navbarDropdown")
     public WebElement navBarDropdown;
+
+    @FindBy(xpath = "//select[@name='tbl_books_length']")
+    public WebElement defaultRecordDropdown;
+
 }
