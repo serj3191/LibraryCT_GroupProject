@@ -13,7 +13,7 @@ public class Management_Page {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
-    @FindBy(xpath = "//span[@class='title']")
+    @FindBy(xpath = "(//span[@class='title'])[2]")
     public  WebElement userModule;
 
     @FindBy(xpath = "//th[@aria-label='Actions']")

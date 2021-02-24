@@ -2,13 +2,16 @@ package com.libraryCT.step_definitions;
 
 import com.libraryCT.pages.LoginPage;
 import com.libraryCT.pages.Management_Page;
+import com.libraryCT.pages.StudentBooksPage;
 import com.libraryCT.utilities.BrowserUtils;
 import com.libraryCT.utilities.ConfigurationReader;
 import com.libraryCT.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ManagementStepDefs {
@@ -30,13 +33,6 @@ public class ManagementStepDefs {
     public void the_user_click_users_module() {
         management_page.userModule.click();
     }
-      @Then("the user should see the following column names:")
-      public void the_user_should_see_the_following_column_names(List<String>columnNames) {
-          
-          System.out.println("columnNames = " + columnNames);
-          for (String eachName : columnNames) {
-              System.out.println("eachName = " + eachName); 
-          }
 
-}
+
 }

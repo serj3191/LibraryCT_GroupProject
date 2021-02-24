@@ -38,7 +38,6 @@ StudentsBorrowingBooksPage studentsBorrowingBooksPage = new StudentsBorrowingBoo
     @Then("the user should see the following column names:")
     public void the_user_should_see_the_following_column_names(List<String> expectedColumnNames) {
 
-
         List<String> actualColumnNames = BrowserUtils.getElementsText(studentsBorrowingBooksPage.tableHeaders);
         Assert.assertEquals(actualColumnNames, expectedColumnNames);
 
