@@ -5,7 +5,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class Librarian_BasePage {
+import java.util.List;
+
+
+public abstract class Librarian_BasePage {
     public Librarian_BasePage(){
         PageFactory.initElements(Driver.getDriver(),this);
     }
@@ -22,5 +25,6 @@ public class Librarian_BasePage {
     @FindBy(id = "navbarDropdown")
     public WebElement navBarDropdown;
 
-
+    @FindBy(xpath = "//ul[@id='menu_item']/li")
+    public List<WebElement> menuLinks;
 }

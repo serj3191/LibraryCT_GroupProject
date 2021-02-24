@@ -22,4 +22,6 @@ public abstract class Student_BasePage {
     @FindBy(id = "navbarDropdown")
     public WebElement navBarDropdown;
 
+    @FindBy(xpath = "//ul[@id='menu_item']/li")
+    public List<WebElement> menuLinks;
 }

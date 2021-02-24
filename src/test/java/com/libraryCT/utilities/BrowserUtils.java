@@ -9,6 +9,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.Random;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BrowserUtils {
     static Faker faker = new Faker();
     public static void sleep(double second){
