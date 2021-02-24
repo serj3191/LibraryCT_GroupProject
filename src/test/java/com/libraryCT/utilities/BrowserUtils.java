@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import java.util.ArrayList;
@@ -62,5 +64,13 @@ public class BrowserUtils {
     public static int generatesRandomNum(int min, int max){
         Faker faker = new Faker();
        return faker.number().numberBetween(min,max);
+    }
+
+    public static List<String> getElementsText(List<WebElement> list) {
+        List<String> elemTexts = new ArrayList<>();
+        for (WebElement el : list) {
+            elemTexts.add(el.getText());
+        }
+        return elemTexts;
     }
 }

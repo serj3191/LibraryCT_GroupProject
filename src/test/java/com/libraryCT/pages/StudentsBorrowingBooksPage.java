@@ -8,8 +8,8 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class BorrowingBooksPage extends Librarian_BasePage {
-    public BorrowingBooksPage(){
+public class StudentsBorrowingBooksPage extends Librarian_BasePage {
+    public StudentsBorrowingBooksPage(){
         PageFactory.initElements(Driver.getDriver(), this);
     }
 

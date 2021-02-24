@@ -1,7 +1,7 @@
 package com.libraryCT.step_definitions;
 import com.libraryCT.pages.Librarian_BasePage;
 import com.libraryCT.pages.LoginPage;
-import com.libraryCT.pages.UsersPage;
+import com.libraryCT.pages.LibrarianUsersPage;
 import com.libraryCT.utilities.BrowserUtils;
 import com.libraryCT.utilities.ConfigurationReader;
 import com.libraryCT.utilities.Driver;
@@ -11,14 +11,11 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.Select;
 
-import java.util.concurrent.TimeUnit;
-
 public class Add_User_step_definition extends Librarian_BasePage {
-    UsersPage usersPage = new UsersPage();
+    LibrarianUsersPage librarianUsersPage = new LibrarianUsersPage();
     GlobalDataUtil globalDataUtil = new GlobalDataUtil();
 
     @Given("User login as an librarian and user is on the Library home page")
@@ -36,7 +33,7 @@ public class Add_User_step_definition extends Librarian_BasePage {
 
     @When("User clicks on Add User tab")
     public void user_clicks_on_add_user_tab() {
-        usersPage.addUserButton.click();
+        librarianUsersPage.addUserButton.click();
     }
 
     @When("User fills out the form as followed from the table below:")
@@ -47,67 +44,67 @@ public class Add_User_step_definition extends Librarian_BasePage {
     public void userEntersToFullNameInputBox(String fullName) {
          fullName = BrowserUtils.generatesRandomName();
          globalDataUtil.setFullName(fullName);
-         usersPage.inputBoxes("full_name").sendKeys(fullName);
+         librarianUsersPage.inputBoxes("full_name").sendKeys(fullName);
 
     }
 
     @And("User enters {string} to Password input box")
     public void userEntersToPasswordInputBox(String password) {
          password = BrowserUtils.generatesRandomPassword();
-        usersPage.inputBoxes("password").sendKeys(password);
+        librarianUsersPage.inputBoxes("password").sendKeys(password);
     }
 
     @And("User enters {string} to Email input box")
     public void userEntersToEmailInputBox(String Email) {
          Email = BrowserUtils.generatesRandomEmail();
-        usersPage.inputBoxes("email").sendKeys(Email);
+        librarianUsersPage.inputBoxes("email").sendKeys(Email);
     }
 
     @And("User selects {string} from User group drop down")
     public void userSelectsFromUserGroupDropDown(String option) {
-        Select UserGroup = new Select(usersPage.inputBoxes2("user_group_id"));
+        Select UserGroup = new Select(librarianUsersPage.inputBoxes2("user_group_id"));
         option = "Librarian";
         UserGroup.selectByVisibleText(option);
     }
 
     @And("User selects {string} from Status drop down")
     public void userSelectsFromStatusDropDown(String option) {
-        Select Status = new Select(usersPage.inputBoxes2("status"));
+        Select Status = new Select(librarianUsersPage.inputBoxes2("status"));
         option = "ACTIVE";
         Status.selectByVisibleText(option);
     }
 
     @And("User enters {string} to Start Date input box")
     public void userEntersToStartDateInputBox(String startDate) {
-        usersPage.inputBoxes("start_date").clear();
+        librarianUsersPage.inputBoxes("start_date").clear();
         startDate = "2020-10-21";
-        usersPage.inputBoxes("start_date").sendKeys(startDate+Keys.ENTER);
+        librarianUsersPage.inputBoxes("start_date").sendKeys(startDate+Keys.ENTER);
     }
 
     @And("User enters {string} to End Date input box")
     public void userEntersToEndDateInputBox(String endDate) {
-        usersPage.inputBoxes("end_date").clear();
+        librarianUsersPage.inputBoxes("end_date").clear();
         endDate = "2021-10-21";
-        usersPage.inputBoxes("end_date").sendKeys("2021-10-21"+Keys.ENTER);
+        librarianUsersPage.inputBoxes("end_date").sendKeys("2021-10-21"+Keys.ENTER);
     }
 
     @And("User enters {string} to Address input box")
     public void userEntersToAddressInputBox(String Address) {
          Address = BrowserUtils.generatesRandomAddress();
-        usersPage.addressInputBox.sendKeys(Address);
+        librarianUsersPage.addressInputBox.sendKeys(Address);
 
     }
 
     @And("User clicks on Save change button")
     public void userClicksOnSaveChangeButton() {
-        usersPage.saveChangeButton.click();
+        librarianUsersPage.saveChangeButton.click();
         BrowserUtils.sleep(5);
     }
 
     @Then("User verifies {string} is in the list")
     public void userVerifiesIsInTheList(String FullName) {
-        BrowserUtils.waitUntilTextToBePresent(usersPage.newlyAddedUsersName,usersPage.newlyAddedUsersName.getText());
-        String actualName = usersPage.newlyAddedUsersName.getText();
+        BrowserUtils.waitUntilTextToBePresent(librarianUsersPage.newlyAddedUsersName, librarianUsersPage.newlyAddedUsersName.getText());
+        String actualName = librarianUsersPage.newlyAddedUsersName.getText();
         Assert.assertEquals(actualName,globalDataUtil.getFullName());
     }
 
@@ -127,18 +124,18 @@ public class Add_User_step_definition extends Librarian_BasePage {
 
     @And("User clicks on Add User button")
     public void userClicksOnAddUserButton() {
-        usersPage.addUserButton.click();
+        librarianUsersPage.addUserButton.click();
     }
 
     @And("User clicks on Close button tab")
     public void userClicksOnCloseButtonTab() {
-        BrowserUtils.waitUntilClickable(usersPage.closeButton);
-        usersPage.closeButton.click();
+        BrowserUtils.waitUntilClickable(librarianUsersPage.closeButton);
+        librarianUsersPage.closeButton.click();
     }
 
     @Then("Add User pop up should be closed")
     public void addUserPopUpShouldBeClosed() {
-        Assert.assertEquals("modal fade", usersPage.getAttributeValue());
+        Assert.assertEquals("modal fade", librarianUsersPage.getAttributeValue());
 
     }
 
@@ -158,7 +155,7 @@ public class Add_User_step_definition extends Librarian_BasePage {
 
     @And("User clicks on Edit User button")
     public void userClicksOnEditUserButton() {
-        usersPage.editUserButton.click();
+        librarianUsersPage.editUserButton.click();
 
     }
 
@@ -166,23 +163,23 @@ public class Add_User_step_definition extends Librarian_BasePage {
     public void userChangeTheInEditUserInfoPopUp(String fullName) {
 
         fullName = BrowserUtils.generatesRandomName();
-        usersPage.inputBoxes("full_name").clear();
-        usersPage.inputBoxes("full_name").sendKeys(fullName);
+        librarianUsersPage.inputBoxes("full_name").clear();
+        librarianUsersPage.inputBoxes("full_name").sendKeys(fullName);
         globalDataUtil.setFullName(fullName);
 }
 
     @And("User clicks on Save change")
     public void userClicksOnSaveChange() {
-        BrowserUtils.waitUntilClickable(usersPage.saveChangeButton);
-        usersPage.saveChangeButton.click();
+        BrowserUtils.waitUntilClickable(librarianUsersPage.saveChangeButton);
+        librarianUsersPage.saveChangeButton.click();
         BrowserUtils.sleep(5);
     }
 
     @Then("User verify the changed name is in the list")
     public void userVerifyTheChangedNameIsInTheList() {
-        BrowserUtils.waitUntilTextToBePresent(usersPage.newlyAddedUsersName,usersPage.newlyAddedUsersName.getText());
+        BrowserUtils.waitUntilTextToBePresent(librarianUsersPage.newlyAddedUsersName, librarianUsersPage.newlyAddedUsersName.getText());
         String expected = globalDataUtil.getFullName();
-        String actualName = usersPage.newlyAddedUsersName.getText();
+        String actualName = librarianUsersPage.newlyAddedUsersName.getText();
         Assert.assertEquals(actualName,expected);
 
     }

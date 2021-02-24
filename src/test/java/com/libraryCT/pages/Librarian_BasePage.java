@@ -7,7 +7,6 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-
 public abstract class Librarian_BasePage {
     public Librarian_BasePage(){
         PageFactory.initElements(Driver.getDriver(),this);
@@ -27,4 +26,7 @@ public abstract class Librarian_BasePage {
 
     @FindBy(xpath = "//ul[@id='menu_item']/li")
     public List<WebElement> menuLinks;
+
+    @FindBy(xpath = "//a[@class='dropdown-item']")
+    public WebElement Logout;
 }

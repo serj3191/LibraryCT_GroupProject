@@ -10,9 +10,9 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UsersPage {
+public class LibrarianUsersPage {
 
-    public UsersPage() {
+    public LibrarianUsersPage() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 

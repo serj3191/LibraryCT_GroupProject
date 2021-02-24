@@ -1,33 +1,16 @@
 package com.libraryCT.step_definitions;
 
-import com.libraryCT.pages.LogoutPage;
+import com.libraryCT.pages.LibrarianDashboardPage;
+import com.libraryCT.pages.StudentBooksPage;
 import com.libraryCT.utilities.BrowserUtils;
-import com.libraryCT.utilities.ConfigurationReader;
 import com.libraryCT.utilities.Driver;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
 
-public class LogoutsStepDefs {
+public class LogoutsStepDefs  {
 
-    LogoutPage logoutPage=new LogoutPage();
-
-    @When("the user clicks the dropdown button")
-    public void the_user_clicks_the_dropdown_button() {
-
-        BrowserUtils.sleep(3);
-        logoutPage.dropdown.click();
-
-    }
-
-    @When("the user clicks the logout button")
-    public void the_user_clicks_the_logout_button() {
-    logoutPage.Logout.click();
-        BrowserUtils.sleep(3);
-    }
 
     @Then("the user sees the loginPage")
     public void the_user_sees_the_login_page() {
@@ -37,4 +20,31 @@ public class LogoutsStepDefs {
 
     }
 
+    @And("the student clicks the dropdown button")
+    public void theStudentClicksTheDropdownButton() {
+        StudentBooksPage studentBooksPage = new StudentBooksPage();
+        BrowserUtils.sleep(3);
+        studentBooksPage.navBarDropdown.click();
+    }
+
+    @And("the student clicks the logout button")
+    public void theStudentClicksTheLogoutButton() {
+        StudentBooksPage studentBooksPage = new StudentBooksPage();
+            studentBooksPage.Logout.click();
+            BrowserUtils.sleep(3);
+    }
+
+    @And("the librarian clicks the dropdown button")
+    public void theLibrarianClicksTheDropdownButton() {
+        LibrarianDashboardPage librarianDashboardPage = new LibrarianDashboardPage();
+        BrowserUtils.sleep(3);
+       librarianDashboardPage.navBarDropdown.click();
+        }
+
+
+    @And("the libarian clicks the logout button")
+    public void theLibarianClicksTheLogoutButton() {
+        LibrarianDashboardPage librarianDashboardPage = new LibrarianDashboardPage();
+        librarianDashboardPage.Logout.click();
+    }
 }
