@@ -5,7 +5,7 @@
 
       Given the user is on login page
       When the user login with "<username>" "<password>"
-    Then the user should see the following column names:
+    Then the user should see the following Column names:
       | Actions     |
       | ISBN        |
       | Name        |

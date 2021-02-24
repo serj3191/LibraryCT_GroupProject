@@ -21,7 +21,7 @@ public class Columns_Names_StepDefinitions {
         new LoginPage().login(username,password);
     }
 
-    @Then("the user should see the following column names:")
+    @Then("the user should see the following Column names:")
     public void theUserShouldSeeTheFollowingColumnNames(List<String>data) {
         StudentBooksPage page = new StudentBooksPage();
         List <String> actual = page.tableheaders.stream()

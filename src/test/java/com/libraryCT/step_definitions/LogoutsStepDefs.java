@@ -42,8 +42,8 @@ public class LogoutsStepDefs  {
         }
 
 
-    @And("the libarian clicks the logout button")
-    public void theLibarianClicksTheLogoutButton() {
+    @And("the librarian clicks the logout button")
+    public void theLibrarianClicksTheLogoutButton() {
         LibrarianDashboardPage librarianDashboardPage = new LibrarianDashboardPage();
         librarianDashboardPage.Logout.click();
     }
