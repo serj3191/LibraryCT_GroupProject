@@ -4,6 +4,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BrowserUtils {
 
     public static void sleep(double second){
@@ -24,6 +27,14 @@ public class BrowserUtils {
     public static boolean waitUntilTextToBePresent(WebElement element,String text) {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 5);
         return wait.until(ExpectedConditions.textToBePresentInElement(element,text));
+    }
+
+    public static List<String> getListOfElementsText(List<WebElement> WebElement){
+        List<String> elements = new ArrayList<>();
+        for (WebElement each: WebElement) {
+            elements.add(each.getText());
+        }
+        return elements;
     }
 
 }
