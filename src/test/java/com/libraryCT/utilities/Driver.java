@@ -24,7 +24,7 @@ public class Driver {
                 case "chrome":
                     WebDriverManager.chromedriver().setup();
                     options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
-                    driver = new ChromeDriver(options);
+                    driver = new ChromeDriver(options);//options???
                     break;
                 case "firefox":
                     WebDriverManager.firefoxdriver().setup();
@@ -38,7 +38,7 @@ public class Driver {
             }
         }
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         return driver;
     }
 
