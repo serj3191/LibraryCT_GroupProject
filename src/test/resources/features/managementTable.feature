@@ -1,4 +1,3 @@
-@Manage
 Feature: user management table feature
   //10:User Management table feature
 @dataTable
