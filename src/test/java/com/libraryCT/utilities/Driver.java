@@ -1,5 +1,6 @@
 package com.libraryCT.utilities;
 
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -10,42 +11,52 @@ import java.util.concurrent.TimeUnit;
 
 public class Driver {
 
-    private Driver() {
-    }
+    private Driver(){}
 
-    private static WebDriver driver;
+    private static ThreadLocal<WebDriver> driverpool = new ThreadLocal<>();
 
     public static WebDriver getDriver() {
         ChromeOptions options = new ChromeOptions();
-        if (driver == null) {
-            String browser = ConfigurationReader.getProperty("browser");
+        if (driverpool.get() == null) {
 
-            switch (browser.toLowerCase()) {
-                case "chrome":
-                    WebDriverManager.chromedriver().setup();
-                    options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
-                    driver = new ChromeDriver(options);//options???
-                    break;
-                case "firefox":
-                    WebDriverManager.firefoxdriver().setup();
-                    driver = new FirefoxDriver();
-                    break;
-                default:
-                    WebDriverManager.chromedriver().setup();
-                    options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
-                    driver = new ChromeDriver(options);
-                    break;
+            synchronized (Driver.class) {
+
+                String browser = ConfigurationReader.getProperty("browser");
+
+                switch (browser.toLowerCase()) {
+                    case "chrome":
+                        WebDriverManager.chromedriver().setup();
+                        options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
+                        driverpool.set(new ChromeDriver(options));
+                        break;
+                    case "firefox":
+                        WebDriverManager.firefoxdriver().setup();
+                        driverpool.set(new FirefoxDriver());
+                        break;
+                    default:
+                        WebDriverManager.chromedriver().setup();
+                        options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
+                        driverpool.set(new ChromeDriver(options));
+                        break;
+                    case "chrome_headless":
+                        WebDriverManager.chromedriver().setup();
+                        options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
+                        options.setHeadless(true);
+                        driverpool.set(new ChromeDriver(options));
+                }
+
+                driverpool.get().manage().window().maximize();
+                driverpool.get().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
             }
         }
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        return driver;
+        return driverpool.get();
     }
 
-    public static void closeDriver() {
-        if (driver != null) {
-            driver.quit();
-            driver = null;
+    public static void closeDriver(){
+        if (driverpool.get() != null){
+            driverpool.get().quit();
+            driverpool.remove();
         }
     }
+
 }
