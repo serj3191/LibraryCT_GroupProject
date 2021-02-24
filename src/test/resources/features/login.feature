@@ -2,7 +2,7 @@
 Feature: Login
 
   #"1. As a user, I should be able to login to the library app.
-
+@wip
   Scenario Outline: Verify both students and librarians can login
     Given the user login as a "<userType>"
     Then the user is on "<page>" page
