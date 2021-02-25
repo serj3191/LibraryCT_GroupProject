@@ -8,7 +8,7 @@ Feature: Book Records
     Given the user login as a "librarian"
     And the user click on books module
    Then the user should see default book record is 10
-
+  @smoke
   Scenario: Show options for book records
     Given the user login as a "librarian"
     And the user click on books module

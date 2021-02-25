@@ -1,6 +1,6 @@
 Feature: Book Search
 
-  @wip2
+  @smoke
   #7. As a student, I should be able to search books with different categories.
   Scenario: User should be able to search books /filter  by categories in Book Categories dropdown
 

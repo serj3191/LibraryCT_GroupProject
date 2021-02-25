@@ -1,7 +1,7 @@
 @logout
 Feature: logout
 
-
+  @smoke
   Scenario: Verify students can logout
 
     Given the user login as a "student"
@@ -9,7 +9,7 @@ Feature: logout
     And the student clicks the dropdown button
     And the student clicks the logout button
     Then the user sees the loginPage
-
+  @smoke
   Scenario: Verify librarians can logout
 
     Given the user login as a "librarian"

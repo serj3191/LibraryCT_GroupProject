@@ -1,6 +1,6 @@
 Feature: user management table feature
   //10:User Management table feature
-@dataTable
+  @smoke
   Scenario: user management table columns names
 
     Given the user(librarian) on the homepage
